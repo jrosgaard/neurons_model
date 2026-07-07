@@ -1,0 +1,30 @@
+# Tumor microenvironment configuration for GBMsim
+
+tumor_microenvironment:
+  enabled: false
+
+  fields:
+    oxygen:
+      enabled: false
+      initial_value: 1.0
+      decay_tau_ms: 1000.0
+
+    nutrient:
+      enabled: false
+      initial_value: 1.0
+      decay_tau_ms: 1000.0
+
+    extracellular_glutamate:
+      enabled: false
+      initial_value: 0.0
+      decay_tau_ms: 100.0
+
+    cytokine_signal:
+      enabled: false
+      initial_value: 0.0
+      decay_tau_ms: 1000.0
+
+    hypoxia_signal:
+      enabled: false
+      initial_value: 0.0
+      decay_tau_ms: 1000.0

@@ -1,0 +1,20 @@
+{
+    "name": "oligo",
+    "kind": "oligodendrocyte",
+    "count_n": 10,
+    "cell_class": "glia",
+    "dynamics": "myelination_modulatory",
+    "is_spiking": false,
+    "parameters": {
+        "myelination_factor": 0.6
+    },
+    "metadata": {
+        "role": "myelinating",
+        "state": "mature",
+        "markers": [
+            "MBP",
+            "PLP1",
+            "MOG"
+        ]
+    }
+}

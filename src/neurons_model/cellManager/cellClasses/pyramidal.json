@@ -1,0 +1,32 @@
+{
+    "name": "pyramidal",
+    "kind": "excitatory_pyramidal",
+    "count_n": 75,
+    "cell_class": "neuron",
+    "dynamics": "lif",
+    "is_spiking": true,
+    "parameters": {
+        "v_rest_mv": -65.0,
+        "v_threshold_mv": -50.0,
+        "v_reset_mv": -65.0,
+        "tau_m_ms": 20.0,
+        "tau_refractory_ms": 2.0,
+        "adaptation_str": 0.05,
+        "baseline_input": 0.74,
+        "perturb_std": 0.2,
+        "noise_std": 0.05
+    },
+    "metadata": {
+        "role": "excitatory",
+        "receptors": [
+            "ampa",
+            "nmda",
+            "gaba_a"
+        ],
+        "markers": [
+            "RBFOX3",
+            "SYP",
+            "HOMER1"
+        ]
+    }
+}

@@ -1,0 +1,101 @@
+
+
+# ---- Define synaptic pathways between populations with their properties. ----
+
+pathways:
+
+  # From pyramidal to other
+
+  - source: pyramidal
+    target: pyramidal
+    receptor: ampa
+    probability: 0.18
+    weight: 0.014796
+    delay_ms: 1.5
+    tau_rise_ms: 0.5
+    tau_decay_ms: 3.0
+    reversal_mv: 0.0
+
+  - source: pyramidal
+    target: int_fast
+    receptor: ampa
+    probability: 0.18
+    weight: 0.002041
+    delay_ms: 1.0
+    tau_rise_ms: 0.5
+    tau_decay_ms: 3.0
+    reversal_mv: 0.0
+
+  - source: pyramidal
+    target: int_adapt
+    receptor: ampa
+    probability: 0.18
+    weight: 0.002857
+    delay_ms: 1.2
+    tau_rise_ms: 0.5
+    tau_decay_ms: 3.0
+    reversal_mv: 0.0
+
+  # From interneuron_fast to other
+
+  - source: int_fast
+    target: pyramidal
+    receptor: gaba_a
+    probability: 0.08
+    weight: 0.013143
+    delay_ms: 0.8
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: int_fast
+    target: int_fast
+    receptor: gaba_a
+    probability: 0.14
+    weight: 0.008
+    delay_ms: 0.8
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: int_fast
+    target: int_adapt
+    receptor: gaba_a
+    probability: 0.18
+    weight: 0.008
+    delay_ms: 0.8
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+    # From interneuron_adapt to other
+
+  - source: int_adapt
+    target: pyramidal
+    receptor: gaba_a
+    probability: 0.08
+    weight: 0.012571
+    delay_ms: 1.2
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: int_adapt
+    target: int_fast
+    receptor: gaba_a
+    probability: 0.15
+    weight: 0.008
+    delay_ms: 1.0
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: int_adapt
+    target: int_adapt
+    receptor: gaba_a
+    probability: 0.12
+    weight: 0.006
+    delay_ms: 1.0
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0

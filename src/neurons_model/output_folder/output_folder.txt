@@ -1,0 +1,5 @@
+This is the default save path when running a simulation is save is true.
+Each simulation run will be given its own subfolder containing:
+-  metadata
+- summary readouts
+- per-timestep output

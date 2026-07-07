@@ -1,0 +1,219 @@
+# Glioma preset parameters for tumor-network simulation. 
+# Defines glioma cell types, properties, and interactions with neurons and glia.
+
+schema_version: 1.0
+name: glioma
+description: Cell characteristics and planned interactions for glioma simulation.
+
+glioma_cells:
+
+  # --------------------------------------------------------------------------------------------------
+  # Astrocytoma - low-grade glioma subtype 
+  - name: astrocytoma
+    class: cancer
+    kind: glioma
+    subtype: astrocytoma
+    grade: low_grade
+    state: infiltrative
+    count_n: 10
+
+    is_spiking: false
+    electrically_active: true
+    dynamics: glioma_proliferation
+    receptors: [ampa, nmda, gaba_a]
+    markers: [GFAP, AQP4, SLC1A3, SOX2]
+
+    proliferation_rate_au: 0.05
+    migration_rate_au: 0.25
+    invasiveness_au: 0.30
+    activity_coupling_au: 0.20
+    immune_evasion_au: 0.20
+    hypoxia_tolerance_au: 0.30
+    
+    membrane:
+      enabled: false
+      v_rest_mv: -65.0
+      v_threshold_mv: -50.0
+      v_reset_mv: -65.0
+      tau_m_ms: 20.0
+      tau_refractory_ms: 2.0
+      adaptation_strength: 0.05
+      baseline_input_au: 0.74
+      perturb_std_au: 0.20
+      noise_std_au: 0.05
+    
+    sensing:
+      enabled: false
+      signals: [local_spike_rate, extracellular_glutamate, oxygen, nutrient, cytokine_signal]
+      radius_um: 75.0
+      update_interval_ms: 10.0
+    
+    interactions:
+      neuron_coupling:
+        enabled: false
+        targets: [pyramidal, int_fast, int_adapt]
+        mechanism: activity_dependent_growth
+        coupling_strength_au: 0.20
+      immune_interaction:
+        enabled: false
+        targets: [microglia_off, microglia_on]
+        immune_evasion_au: 0.20
+
+  # --------------------------------------------------------------------------------------------------
+  # Glioblastoma - high-grade glioma subtype 
+  - name: glioblastoma
+    class: cancer
+    kind: glioma
+    subtype: glioblastoma
+    grade: high_grade
+    state: infiltrative
+    count_n: 10
+
+    is_spiking: false
+    electrically_active: true
+    dynamics: glioma_proliferation
+    receptors: [ampa, nmda, gaba_a]
+    markers: [GFAP, AQP4, SLC1A3, SOX2, NES]
+
+    proliferation_rate_au: 0.10
+    migration_rate_au: 0.45
+    invasiveness_au: 0.50
+    activity_coupling_au: 0.40
+    immune_evasion_au: 0.50
+    hypoxia_tolerance_au: 0.60
+    
+    membrane:
+      enabled: false
+      v_rest_mv: -65.0
+      v_threshold_mv: -50.0
+      v_reset_mv: -65.0
+      tau_m_ms: 20.0
+      tau_refractory_ms: 2.0
+      adaptation_strength: 0.05
+      baseline_input_au: 0.74
+      perturb_std_au: 0.20
+      noise_std_au: 0.05
+    
+    sensing:
+      enabled: false
+      signals: [local_spike_rate, extracellular_glutamate, oxygen, nutrient, cytokine_signal, damage_signal]
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    
+    interactions:
+      neuron_coupling:
+        enabled: false
+        targets: [pyramidal, int_fast, int_adapt]
+        mechanism: activity_dependent_growth
+        coupling_strength_au: 0.40
+      immune_interaction:
+        enabled: false
+        targets: [microglia_off, microglia_on]
+        immune_evasion_au: 0.50
+
+  # --------------------------------------------------------------------------------------------------
+  # Glioma stem-like cells - highly invasive and therapy-resistant subpopulation 
+  - name: glioma_stem
+    class: cancer
+    kind: glioma
+    subtype: stem
+    grade: high_grade
+    state: stem_like_invasive
+    count_n: 5
+
+    is_spiking: false
+    electrically_active: true
+    dynamics: glioma_proliferation
+    receptors: [ampa, nmda, gaba_a]
+    markers: [SOX2, NES, PROM1, OLIG2]
+
+    proliferation_rate_au: 0.08
+    migration_rate_au: 0.60
+    invasiveness_au: 0.70
+    activity_coupling_au: 0.50
+    immune_evasion_au: 0.60
+    hypoxia_tolerance_au: 0.70
+    therapy_resistance_au: 0.70
+
+    membrane:
+      enabled: false
+      v_rest_mv: -65.0
+      v_threshold_mv: -50.0
+      v_reset_mv: -65.0
+      tau_m_ms: 20.0
+      tau_refractory_ms: 2.0
+      adaptation_strength: 0.05
+      baseline_input_au: 0.74
+      perturb_std_au: 0.20
+      noise_std_au: 0.05
+    
+    sensing:
+      enabled: false
+      signals: [local_spike_rate, extracellular_glutamate, oxygen, nutrient, hypoxia_signal, cytokine_signal]
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    
+    interactions:
+      neuron_coupling:
+        enabled: false
+        targets: [pyramidal, int_fast, int_adapt]
+        mechanism: activity_dependent_growth
+        coupling_strength_au: 0.50
+      immune_interaction:
+        enabled: false
+        targets: [microglia_off, microglia_on]
+        immune_evasion_au: 0.60
+
+        glioma_cells:
+
+  # --------------------------------------------------------------------------------------------------
+  # GAMs - Glioma-associated macrophages
+  - name: gam
+    class: tam # Tumor-associated macrophage
+    kind: tam
+    subtype: gam
+    grade: None
+    state: tumor_associated
+    count_n: 10
+
+    is_spiking: false
+    electrically_active: true
+    dynamics: immune_modulatory
+    receptors: [ampa, nmda, gaba_a, ]
+    markers: []
+
+    proliferation_rate_au: 0.05
+    migration_rate_au: 0.25
+    invasiveness_au: 0.30
+    activity_coupling_au: 0.20
+    immune_evasion_au: 0.20
+    hypoxia_tolerance_au: 0.30
+    
+    membrane:
+      enabled: false
+      v_rest_mv: -65.0
+      v_threshold_mv: -50.0
+      v_reset_mv: -65.0
+      tau_m_ms: 20.0
+      tau_refractory_ms: 2.0
+      adaptation_strength: 0.05
+      baseline_input_au: 0.74
+      perturb_std_au: 0.20
+      noise_std_au: 0.05
+    
+    sensing:
+      enabled: false
+      signals: [local_spike_rate, extracellular_glutamate, oxygen, nutrient, cytokine_signal]
+      radius_um: 75.0
+      update_interval_ms: 10.0
+    
+    interactions:
+      neuron_coupling:
+        enabled: false
+        targets: [pyramidal, int_fast, int_adapt]
+        mechanism: activity_dependent_growth
+        coupling_strength_au: 0.20
+      immune_interaction:
+        enabled: false
+        targets: [microglia_off, microglia_on]
+        immune_evasion_au: 0.20

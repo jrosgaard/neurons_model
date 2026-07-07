@@ -1,0 +1,95 @@
+# expanded.yaml - Not implemented yet
+schema_version: 1.0
+name: expanded_1
+description: Expanded healthy preset with additional cell types.
+
+# Define populations with their properties.
+glial_populations:
+
+  - name: astro
+    class: glia
+    role: supportive
+    kind: astrocyte
+    state: homeostatic
+    count_n: 10
+    is_spiking: false
+    dynamics: astrocyte_modulatory
+    receptors: [ampa, nmda, gaba_a,]
+    markers: [GFAP, AQP4, SLC1A3,]
+    HLA: # Placeholder for later functionality
+      enabled: false
+      type_i: None
+      type_ii: None
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    glutamate_uptake: 0.5
+    ion_modulation: 0.1
+    dopa_modulation: 0.1
+    noise_std: 0.03
+
+  - name: oligo
+    class: glia
+    role: myelinating
+    kind: oligodendrocyte
+    state: mature
+    count_n: 10
+    is_spiking: false
+    dynamics: myelination_modulatory
+    markers: [MBP, PLP1, MOG,]
+    HLA: # Placeholder for later functionality
+      enabled: false
+      type_i: None
+      type_ii: None
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    myelination_factor: 0.6
+
+  - name: microglia_off
+    class: glia
+    role: immune
+    kind: microglia
+    state: ramified # surveilling/resting state
+    count_n: 10
+    is_spiking: false
+    dynamics: immune_modulatory
+    markers: [AIF1, CX3CR1, P2RY12, TMEM119,]
+    HLA: # Placeholder for later functionality
+      enabled: false
+      type_i: None
+      type_ii: None
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    surveying: 0.8
+    reactivity: 0.2
+    cytotoxicity: 0.05
+    surveillance:
+      enabled: false
+      targets: [pyramidal, int_fast, int_adapt,]
+      signals: [local_spike_rate, extracellular_glutamate, damage_signal,]
+      radius_um: 50.0
+      update_interval_ms: 10.0
+
+  - name: microglia_on
+    class: glia
+    role: immune
+    kind: microglia
+    state: amoeboid # activated state
+    count_n: 2
+    is_spiking: false
+    dynamics: immune_modulatory
+    markers: [AIF1, CD68, ITGAM, C1QA, APOE, IBA1,]
+    HLA: # Placeholder for later functionality
+      enabled: false
+      type_i: None
+      type_ii: None
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    surveying: 0.4
+    reactivity: 0.8
+    cytotoxicity: 0.6
+    surveillance:
+      enabled: false
+      targets: [pyramidal, int_fast, int_adapt,]
+      signals: [damage_signal, cytokine_signal, apoptotic_signal,]
+      radius_um: 40.0
+      update_interval_ms: 10.0

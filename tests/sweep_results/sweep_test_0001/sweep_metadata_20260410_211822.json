@@ -1,0 +1,18 @@
+{
+  "preset_path": "/Users/johanrosgaard/Documents/BNQ/neurons_model/src/neurons_model/presets/healthy_quiet.yaml",
+  "save_timestamp": "20260410_211822",
+  "n_cases": 45,
+  "sweep_multipliers": [
+    0.5,
+    0.75,
+    1.0,
+    1.25,
+    1.5
+  ],
+  "integrator": "rk4",
+  "rhythm": "beta",
+  "dt_ms": 0.1,
+  "duration_ms": 20.0,
+  "scale_factor": 0.2,
+  "scaling_strategy": "preserve_in_degree"
+}

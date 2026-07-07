@@ -1,0 +1,85 @@
+# expanded.yaml - Not implemented yet
+schema_version: 1.0
+name: expanded_1
+description: Expanded healthy preset with additional cell types.
+
+# Define populations with their properties.
+neurons:
+  - name: pyramidal
+    class: neuron
+    role: excitatory
+    kind: excitatory_pyramidal
+    count_n: 75
+    is_spiking: true
+    dynamics: lif
+    receptors: [ampa, nmda, gaba_a]
+    markers: [RBFOX3, SYP, HOMER1,]
+    HLA: # Placeholder for later functionality
+      enabled: false
+      type_i: None
+      type_ii: None
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    v_rest_mv: -65.0
+    v_threshold_mv: -50.0
+    v_reset_mv: -65.0
+    tau_m_ms: 20.0
+    tau_refractory_ms: 2.0
+    adaptation_str: 0.05
+    baseline_input: 0.74
+    perturb_std: 0.2
+    noise_std: 0.05
+
+  - name: int_fast
+    class: neuron
+    role: inhibitory
+    kind: interneuron_fast
+    count_n: 13
+    is_spiking: true
+    dynamics: lif
+    receptors: [ampa, gaba_a]
+    markers: [RBFOX3, SYP, HOMER1,]
+    HLA: # Placeholder for later functionality
+      enabled: false
+      type_i: None
+      type_ii: None
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    v_rest_mv: -62.0
+    v_threshold_mv: -47.0
+    v_reset_mv: -62.0
+    tau_m_ms: 10.0
+    tau_refractory_ms: 1.0
+    adaptation_str: 0.0
+    baseline_input: 0.34
+    perturb_std: 0.15
+    noise_std: 0.03
+
+  - name: int_adapt
+    class: neuron
+    role: inhibitory
+    kind: interneuron_adapting
+    count_n: 12
+    is_spiking: true
+    dynamics: lif
+    receptors: [ampa, nmda, gaba_a]
+    markers: [RBFOX3, SYP, HOMER1,]
+    HLA: # Placeholder for later functionality
+      enabled: false
+      type_i: None
+      type_ii: None
+      radius_um: 100.0
+      update_interval_ms: 10.0
+    v_rest_mv: -64.0
+    v_threshold_mv: -49.0
+    v_reset_mv: -64.0
+    tau_m_ms: 16.0
+    tau_refractory_ms: 2.0
+    adaptation_str: 0.1
+    baseline_input: 0.34
+    perturb_std: 0.15
+    noise_std: 0.03
+
+
+
+

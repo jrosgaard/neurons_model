@@ -1,0 +1,176 @@
+{
+  "name": "healthy_quiet_1",
+  "description": "Baseline operating point with balanced excitation and inhibition, quieter than the standard healthy model.",
+  "populations": [
+    {
+      "name": "Ex",
+      "kind": "excitatory",
+      "count_n": 15,
+      "v_rest_mv": -65.0,
+      "v_reset_mv": -65.0,
+      "v_threshold_mv": -50.0,
+      "tau_m_ms": 20.0,
+      "tau_refractory_ms": 2.0,
+      "adaptation_strength": 0.0,
+      "baseline_input": 0.74,
+      "noise_std": 0.05
+    },
+    {
+      "name": "In_fast",
+      "kind": "inhibitory_fast",
+      "count_n": 3,
+      "v_rest_mv": -62.0,
+      "v_reset_mv": -62.0,
+      "v_threshold_mv": -47.0,
+      "tau_m_ms": 10.0,
+      "tau_refractory_ms": 1.0,
+      "adaptation_strength": 0.0,
+      "baseline_input": 0.34,
+      "noise_std": 0.03
+    },
+    {
+      "name": "In_adapt",
+      "kind": "inhibitory_adapting",
+      "count_n": 2,
+      "v_rest_mv": -64.0,
+      "v_reset_mv": -64.0,
+      "v_threshold_mv": -49.0,
+      "tau_m_ms": 16.0,
+      "tau_refractory_ms": 2.0,
+      "adaptation_strength": 0.0,
+      "baseline_input": 0.34,
+      "noise_std": 0.03
+    }
+  ],
+  "pathways": [
+    {
+      "source": "Ex",
+      "target": "Ex",
+      "receptor": "ampa",
+      "probability": 0.8999999999999999,
+      "weight": 0.012,
+      "delay_ms": 1.5,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 3.0,
+      "reversal_mv": 0.0
+    },
+    {
+      "source": "Ex",
+      "target": "In_fast",
+      "receptor": "ampa",
+      "probability": 0.8999999999999999,
+      "weight": 0.008,
+      "delay_ms": 1.0,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 3.0,
+      "reversal_mv": 0.0
+    },
+    {
+      "source": "Ex",
+      "target": "In_adapt",
+      "receptor": "ampa",
+      "probability": 0.8999999999999999,
+      "weight": 0.008,
+      "delay_ms": 1.2,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 3.0,
+      "reversal_mv": 0.0
+    },
+    {
+      "source": "In_fast",
+      "target": "Ex",
+      "receptor": "gaba_a",
+      "probability": 0.39999999999999997,
+      "weight": 0.004,
+      "delay_ms": 0.8,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 8.0,
+      "reversal_mv": -70.0
+    },
+    {
+      "source": "In_fast",
+      "target": "In_fast",
+      "receptor": "gaba_a",
+      "probability": 0.7000000000000001,
+      "weight": 0.008,
+      "delay_ms": 0.8,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 8.0,
+      "reversal_mv": -70.0
+    },
+    {
+      "source": "In_fast",
+      "target": "In_adapt",
+      "receptor": "gaba_a",
+      "probability": 0.8999999999999999,
+      "weight": 0.008,
+      "delay_ms": 0.8,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 8.0,
+      "reversal_mv": -70.0
+    },
+    {
+      "source": "In_adapt",
+      "target": "Ex",
+      "receptor": "gaba_a",
+      "probability": 0.39999999999999997,
+      "weight": 0.004,
+      "delay_ms": 1.2,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 8.0,
+      "reversal_mv": -70.0
+    },
+    {
+      "source": "In_adapt",
+      "target": "In_fast",
+      "receptor": "gaba_a",
+      "probability": 0.7499999999999999,
+      "weight": 0.008,
+      "delay_ms": 1.0,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 8.0,
+      "reversal_mv": -70.0
+    },
+    {
+      "source": "In_adapt",
+      "target": "In_adapt",
+      "receptor": "gaba_a",
+      "probability": 0.6,
+      "weight": 0.006,
+      "delay_ms": 1.0,
+      "tau_rise_ms": 0.5,
+      "tau_decay_ms": 8.0,
+      "reversal_mv": -70.0
+    }
+  ],
+  "simulation": {
+    "dt_ms": 0.1,
+    "duration_ms": 500.0,
+    "seed": 34
+  },
+  "external_input": {
+    "mode": "pulse",
+    "target_population": "Ex",
+    "rate_hz": 5.0,
+    "start_ms": 100.0,
+    "stop_ms": 200.0,
+    "amplitude": 1.0
+  },
+  "task": {
+    "kind": "relay",
+    "input_population": "Ex",
+    "output_population": "Ex",
+    "pattern_a_strength": 1.0,
+    "pattern_b_strength": 1.5
+  },
+  "perturbations": [],
+  "readouts": {
+    "enabled": [
+      "spikes",
+      "rates",
+      "lfp_proxy",
+      "metrics",
+      "spectra"
+    ]
+  }
+}

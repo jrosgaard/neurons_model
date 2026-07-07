@@ -1,0 +1,70 @@
+
+
+# ---- Define synaptic pathways between populations with their properties. ----
+
+pathways:
+
+  # From astrocytes to other
+
+  - source: astro
+    target: pyramidal
+    receptor: ampa
+    probability: 0.1
+    weight: 0.05
+    dopa_modulation: 0.1
+    ion_modulation: 0.1
+
+  - source: astro
+    target: int_fast
+    receptor: ampa
+    probability: 0.1
+    weight: 0.05
+    dopa_modulation: 0.1
+    ion_modulation: 0.1
+
+  - source: astro
+    target: int_adapt
+    receptor: ampa
+    probability: 0.1
+    weight: 0.05
+    dopa_modulation: 0.1
+    ion_modulation: 0.1
+
+  # From oligodendrocytes to other
+
+  - source: oligo
+    target: pyramidal
+    receptor: ampa
+    probability: 0.1
+    weight: 0.05
+    myelination_factor: 0.6
+
+  - source: oligo
+    target: int_fast
+    receptor: ampa
+    probability: 0.1
+    weight: 0.05
+    myelination_factor: 0.6
+
+  - source: oligo
+    target: int_adapt
+    receptor: ampa
+    probability: 0.1
+    weight: 0.05
+    myelination_factor: 0.6
+
+  # From microglia to other
+
+  - source: microglia_on
+    target: pyramidal
+    receptor: ampa
+    probability: 0.1
+    weight: 0.05
+    cytotoxicity: 0.6
+
+  - source: microglia_on
+    target: int_fast
+    receptor: ampa
+    probability: 0.1
+    weight: 0.05
+    cytotoxicity: 0.6

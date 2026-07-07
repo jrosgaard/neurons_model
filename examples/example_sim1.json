@@ -1,0 +1,17 @@
+{
+  "preset_name": "healthy_active_1.yaml",
+
+  "save_name": "example_sim_1_result",
+  "full_result": true,
+  "save_path": "example_sim_1_output",
+  "save_timestamp": "",
+
+  "integrator": "rk4",
+  "rhythm": "beta",
+
+  "dt_ms": 0.1,
+  "duration_ms": 400.0,
+  
+  "scale_factor": 1.0,
+  "scaling_strategy": "preserve_in_degree"
+}

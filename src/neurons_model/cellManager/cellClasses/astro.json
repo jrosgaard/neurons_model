@@ -1,0 +1,28 @@
+{
+    "name": "astro",
+    "kind": "astrocyte",
+    "count_n": 10,
+    "cell_class": "glia",
+    "dynamics": "astrocyte_modulatory",
+    "is_spiking": false,
+    "parameters": {
+        "glutamate_uptake": 0.5,
+        "ion_modulation": 0.1,
+        "dopa_modulation": 0.1,
+        "noise_std": 0.03
+    },
+    "metadata": {
+        "role": "supportive",
+        "state": "homeostatic",
+        "receptors": [
+            "ampa",
+            "nmda",
+            "gaba_a"
+        ],
+        "markers": [
+            "GFAP",
+            "AQP4",
+            "SLC1A3"
+        ]
+    }
+}

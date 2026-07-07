@@ -1,0 +1,30 @@
+Metadata-Version: 2.4
+Name: neurons-model
+Version: 0.1.0
+Summary: Starter workspace for neuron model development
+Author: Your Name
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic>=2.0
+Requires-Dist: pyyaml
+Requires-Dist: numpy
+
+# neurons_model
+
+Starter Python workspace for neuron-model development.
+
+## Quick start
+
+1. Create and activate a virtual environment:
+   - macOS/Linux: `python3 -m venv .venv && source .venv/bin/activate`
+2. Install dependencies:
+   - `pip install -r requirements.txt`
+3. Run the app:
+   - `PYTHONPATH=src python -m neurons_model`
+4. Run tests:
+   - `PYTHONPATH=src pytest -q`
+
+## Project layout
+
+- `src/neurons_model`: application package
+- `tests`: unit tests

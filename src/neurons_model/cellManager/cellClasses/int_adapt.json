@@ -1,0 +1,27 @@
+{
+    "name": "int_adapt",
+    "kind": "interneuron_adapting",
+    "count_n": 12,
+    "cell_class": "neuron",
+    "dynamics": "lif",
+    "is_spiking": true,
+    "parameters": {
+        "v_rest_mv": -64.0,
+        "v_threshold_mv": -49.0,
+        "v_reset_mv": -64.0,
+        "tau_m_ms": 16.0,
+        "tau_refractory_ms": 2.0,
+        "adaptation_str": 0.1,
+        "baseline_input": 0.34,
+        "perturb_std": 0.15,
+        "noise_std": 0.03
+    },
+    "metadata": {
+        "role": "inhibitory",
+        "receptors": [
+            "ampa",
+            "nmda",
+            "gaba_a"
+        ]
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "name": "microglia_off",
+    "kind": "microglia",
+    "count_n": 10,
+    "cell_class": "glia",
+    "dynamics": "immune_modulatory",
+    "is_spiking": false,
+    "parameters": {
+        "surveying": 0.8,
+        "reactivity": 0.2,
+        "cytotoxicity": 0.05
+    },
+    "metadata": {
+        "role": "immune",
+        "state": "ramified",
+        "markers": [
+            "AIF1",
+            "CX3CR1",
+            "P2RY12",
+            "TMEM119"
+        ],
+        "surveillance": {
+            "enabled": false,
+            "targets": [
+                "pyramidal",
+                "int_fast",
+                "int_adapt"
+            ],
+            "signals": [
+                "local_spike_rate",
+                "extracellular_glutamate",
+                "damage_signal"
+            ],
+            "radius_um": 50.0,
+            "update_interval_ms": 10.0
+        }
+    }
+}

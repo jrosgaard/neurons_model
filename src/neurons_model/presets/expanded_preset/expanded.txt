@@ -1,0 +1,19 @@
+This folder is for an expanded collection of cell populations, it is not currently supported.
+While intergration of these populations is being worked on, please use one of the presets outside of this folder for the moment.
+
+The preset is currently split up into five files:
+- neurons: Cell characteristics for neuron populations
+- neuron_synapses: Syanptic connection characteristics
+- glia: Cell characteristics for glial populations
+- glial_modulation: Glial interaction characteristics
+- exapanded_params: Simulation parameters
+
+
+All cells should fall under one of the following:
+- CLASS:
+    - Neuron
+        Role: 
+            - Excitatory
+            - inhibitory
+    - Glia
+        Role:

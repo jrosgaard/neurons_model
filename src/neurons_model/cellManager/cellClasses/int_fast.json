@@ -1,0 +1,26 @@
+{
+    "name": "int_fast",
+    "kind": "interneuron_fast",
+    "count_n": 13,
+    "cell_class": "neuron",
+    "dynamics": "lif",
+    "is_spiking": true,
+    "parameters": {
+        "v_rest_mv": -62.0,
+        "v_threshold_mv": -47.0,
+        "v_reset_mv": -62.0,
+        "tau_m_ms": 10.0,
+        "tau_refractory_ms": 1.0,
+        "adaptation_str": 0.0,
+        "baseline_input": 0.34,
+        "perturb_std": 0.15,
+        "noise_std": 0.03
+    },
+    "metadata": {
+        "role": "inhibitory",
+        "receptors": [
+            "ampa",
+            "gaba_a"
+        ]
+    }
+}

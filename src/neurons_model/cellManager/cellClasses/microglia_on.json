@@ -1,0 +1,40 @@
+{
+    "name": "microglia_on",
+    "kind": "microglia",
+    "count_n": 2,
+    "cell_class": "glia",
+    "dynamics": "immune_modulatory",
+    "is_spiking": false,
+    "parameters": {
+        "surveying": 0.4,
+        "reactivity": 0.8,
+        "cytotoxicity": 0.6
+    },
+    "metadata": {
+        "role": "immune",
+        "state": "amoeboid",
+        "markers": [
+            "AIF1",
+            "CD68",
+            "ITGAM",
+            "C1QA",
+            "APOE",
+            "IBA1"
+        ],
+        "surveillance": {
+            "enabled": false,
+            "targets": [
+                "pyramidal",
+                "int_fast",
+                "int_adapt"
+            ],
+            "signals": [
+                "damage_signal",
+                "cytokine_signal",
+                "apoptotic_signal"
+            ],
+            "radius_um": 40.0,
+            "update_interval_ms": 10.0
+        }
+    }
+}

@@ -1,0 +1,181 @@
+# hyperexcitable.yaml - Preset configuration for a hyperexcitable neural network model
+# This YAML file defines a preset configuration for a neural network model, representing an elevated excitability state. 
+name: hyperexcitable
+description: Elevated neuronal excitability regime.
+
+
+# Define neuron populations with their properties.
+populations:
+
+  - name: Ex
+    kind: excitatory
+    count_n: 75
+    receptors: [ampa, nmda, gaba_a]
+    v_rest_mv: -65.0
+    v_threshold_mv: -50.0
+    v_reset_mv: -65.0
+    tau_m_ms: 20.0
+    tau_refractory_ms: 2.0
+    adaptation_str: 0.05
+    baseline_input: 0.6
+    perturb_std: 0.25
+    noise_std: 0.05
+
+  - name: In_fast
+    kind: inhibitory_fast
+    count_n: 15
+    receptors: [ampa, gaba_a]
+    v_rest_mv: -62.0
+    v_threshold_mv: -47.0
+    v_reset_mv: -62.0
+    tau_m_ms: 10.0
+    tau_refractory_ms: 1.0
+    adaptation_str: 0.0
+    baseline_input: 0.30
+    perturb_std: 0.15
+    noise_std: 0.03
+
+  - name: In_adapt
+    kind: inhibitory_adapting
+    count_n: 10
+    receptors: [ampa, nmda, gaba_a]
+    v_rest_mv: -64.0
+    v_threshold_mv: -49.0
+    v_reset_mv: -64.0
+    tau_m_ms: 16.0
+    tau_refractory_ms: 2.0
+    adaptation_str: 0.1
+    baseline_input: 0.45
+    perturb_std: 0.15
+    noise_std: 0.03
+
+
+# Define synaptic pathways between populations with their properties.
+pathways:
+
+  - source: Ex
+    target: Ex
+    receptor: ampa
+    probability: 0.3
+    weight: 0.24
+    delay_ms: 1.5
+    tau_rise_ms: 0.5
+    tau_decay_ms: 3.0
+    reversal_mv: 0.0
+
+  - source: Ex
+    target: In_fast
+    receptor: ampa
+    probability: 0.4
+    weight: 0.12
+    delay_ms: 1.0
+    tau_rise_ms: 0.5
+    tau_decay_ms: 3.0
+    reversal_mv: 0.0
+
+  - source: Ex
+    target: In_adapt
+    receptor: ampa
+    probability: 0.3
+    weight: 0.12
+    delay_ms: 1.2
+    tau_rise_ms: 0.5
+    tau_decay_ms: 3.0
+    reversal_mv: 0.0
+
+  - source: In_fast
+    target: Ex
+    receptor: gaba_a
+    probability: 0.35
+    weight: 0.22
+    delay_ms: 0.8
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: In_fast
+    target: In_fast
+    receptor: gaba_a
+    probability: 0.20
+    weight: 0.10
+    delay_ms: 0.8
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: In_fast
+    target: In_adapt
+    receptor: gaba_a
+    probability: 0.18
+    weight: 0.08
+    delay_ms: 0.8
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: In_adapt
+    target: Ex
+    receptor: gaba_a
+    probability: 0.22
+    weight: 0.14
+    delay_ms: 1.2
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: In_adapt
+    target: In_fast
+    receptor: gaba_a
+    probability: 0.15
+    weight: 0.08
+    delay_ms: 1.0
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+  - source: In_adapt
+    target: In_adapt
+    receptor: gaba_a
+    probability: 0.12
+    weight: 0.06
+    delay_ms: 1.0
+    tau_rise_ms: 0.5
+    tau_decay_ms: 8.0
+    reversal_mv: -70.0
+
+# Define simulation parameters such as 
+# time step, duration, and random seed.
+simulation:
+  dt_ms: 0.1
+  duration_ms: 8000.0
+  seed: 34
+
+# Define external input parameters, 
+# applying a pulse to the excitatory population.
+external_input:
+  mode: pulse
+  target_population: Ex
+  target_fraction: 0.2
+  start_ms: 100.0
+  stop_ms: 250.0
+  amplitude: 1.0
+  noise_std: 0.1
+
+# Define the task parameters, specifying a relay task with 
+# input and output populations and pattern strengths.
+task:
+  kind: relay
+  input_population: Ex
+  output_population: Ex
+  pattern_a_strength: 1.0
+  pattern_b_strength: 1.5
+
+perturbations: []
+
+readouts:
+  enabled:
+    - spikes
+    - rates
+    - lfp_proxy
+    - metrics
+    - spectra

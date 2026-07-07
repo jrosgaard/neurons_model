@@ -1,0 +1,81 @@
+# ---- Expanded preset parameters for a more complex simulation. ----
+schema_version: 1.0
+name: expanded_healthy_1
+description: Expanded healthy preset with neurons and glial modulation.
+
+include:
+  populations:
+    - populations/neurons.yaml
+    - populations/glia.yaml
+  pathways:
+    - pathways/neuron_synapses.yaml
+    - pathways/glial_modulation.yaml
+
+# ---- Define extracellular fields that cells can sense, with their properties. ----
+fields:
+  extracellular_glutamate:
+    enabled: false
+    initial_value: 0.0
+    diffusion: false
+    decay_tau_ms: 100.0
+
+  damage_signal:
+    enabled: false
+    initial_value: 0.0
+    diffusion: false
+    decay_tau_ms: 500.0
+
+  cytokine_signal:
+    enabled: false
+    initial_value: 0.0
+    diffusion: false
+    decay_tau_ms: 1000.0
+
+  myelination_signal:
+    enabled: false
+    initial_value: 0.0
+    diffusion: false
+    decay_tau_ms: 1000.0
+
+# ---- Define default simulation parameters such as time step, duration, and random seed. ----
+simulation:
+  dt_ms: 0.01
+  duration_ms: 400.0
+  seed: 34
+
+# ---- Define external input parameters, applying a pulse to the excitatory population. ----
+external_input:
+  mode: pulse
+  target_population: pyramidal
+  target_fraction: 0.3
+  start_ms: 100.0
+  stop_ms: 200.0
+  amplitude: 1.0
+  noise_std: 0.1
+
+# ---- Define the task parameters, specifying a relay task with input and output populations and pattern strengths. ----
+task:
+  kind: relay
+  input_population: pyramidal
+  output_population: pyramidal
+  pattern_a_strength: 1.0
+  pattern_b_strength: 1.5
+
+
+perturbations: []
+
+readouts:
+  enabled:
+    - spikes
+    - rates
+    - lfp_proxy
+    - metrics
+    - spectra
+    - connectivity
+    - dimensionality
+    - synchrony
+    - cytotoxicity
+    - myelination
+  
+  disabled:
+    - None
