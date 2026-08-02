@@ -51,10 +51,7 @@ class Network:
     class_: str
     role: str
     kind: str
-
-    is_spiking: bool = True
     dynamics: str
-    is_modulatory: bool = False
 
     # Neuron state arrays
     v_mv: np.ndarray
@@ -78,6 +75,9 @@ class Network:
 
     # Optional integer code for receptor type (e.g. AMPA, GABA) for each synapse
     receptor_code: np.ndarray | None
+
+    is_spiking: bool = True
+    is_modulatory: bool = False
 
     # Index to look up population slices by name
     pop_index: dict[str, PopulationSlice] = field(default_factory=dict)

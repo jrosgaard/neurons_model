@@ -8,12 +8,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from .ablation import Ablation
-from .excitability import ExcitabilityShift
-from .hebbian import HebbianPlasticity
-from .input_drive import InputDrive
-from .synaptic_gain import SynapticGain
-
 if TYPE_CHECKING:
     from ..simulation.config import PerturbationConfig
     from ..simulation.network import Network

@@ -9,6 +9,7 @@ from typing import Any, Literal, Optional
 from pydantic import BaseModel, Field, model_validator
 from dataclasses import dataclass, field
 
+from ..perturbations.base import perturbation_from_config
 
 
 # Population kind defines the functional role of a population. Existing presets
