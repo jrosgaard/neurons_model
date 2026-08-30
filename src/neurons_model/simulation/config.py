@@ -134,7 +134,16 @@ class SimulationConfig(BaseModel):
 
 # InputConfig defines the properties of external inputs to the network
 class InputConfig(BaseModel):
-    mode: Literal["none", "poisson", "pulse", "pattern"] = "poisson"
+    mode: Literal[
+        "none",
+        "poisson",
+        "pulse",
+        "pattern",
+        "waveform",
+        "pulse_waveform",
+        "ramp",
+        "ramp_waveform",
+    ] = "poisson"
     target_population: Optional[str] = None
 
     # Poisson-like input

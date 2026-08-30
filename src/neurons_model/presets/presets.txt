@@ -4,7 +4,7 @@ List of functioning presets:
 - healthy_transition_1
 - healthy_unstable_1
 
-List of presets to work on:
+List of beta-version presets:
 - healthy_expanded: Unfinished preset with expanded cell populations.
 - healthy_active_2
 - inhibitory_loss

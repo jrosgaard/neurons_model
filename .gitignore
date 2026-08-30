@@ -1,6 +1,9 @@
 # Python bytecode
 __pycache__/
 *.py[cod]
+*.egg-info/
+build/
+dist/
 
 # Virtual environments
 .venv/
@@ -9,6 +12,12 @@ venv/
 # Tool caches
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
+
+# Generated local outputs
+output_folder/
+example_sim_1_output/
+sim_metrics.json
 
 # macOS
 .DS_Store

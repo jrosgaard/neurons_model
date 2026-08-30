@@ -5,6 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "neurons-model"
 version = "0.1.0"
+license = "MIT"
 description = "Neuron Sandbox model development"
 readme = "README.md"
 requires-python = ">=3.10"

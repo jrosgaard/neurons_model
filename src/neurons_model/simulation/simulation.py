@@ -18,8 +18,6 @@ from .integrators import INTEGRATORS
 from ..waveform import generate_waveform
 from .drive import ext_drive
 
-from ..perturbations.base import Perturbation
-
 
 # Simulation result container
 @dataclass
@@ -98,14 +96,10 @@ def run_simulation(net: Network,
          for kind in [pop.kind] * pop.count
          ])
     
-    # For now, we assume that excitatory and inhibitory populations use AdEx and LIF+adapt respectively, while non-spiking modulatory populations are separate.
-    if kind_arr in ["excitatory", "inhibitory_fast", "inhibitory_adapting"]:
-        is_adex   = kind_arr == "excitatory"
-        is_fast   = kind_arr == "inhibitory_fast"
-        is_adapt  = kind_arr == "inhibitory_adapting"
-    else:
-        is_non_spiking = kind_arr == "non_spiking"
-        is_modulatory  = kind_arr == "modulatory"
+    # For now, excitatory populations use AdEx, inhibitory_adapting uses LIF
+    # with adaptation, and other known population kinds use simple LIF dynamics.
+    is_adex = kind_arr == "excitatory"
+    is_adapt = kind_arr == "inhibitory_adapting"
 
     # Adaptation variable (used by AdEx and LIF+adapt)
     w = np.zeros(n_neurons)   # pA
@@ -185,9 +179,7 @@ def run_simulation(net: Network,
     else:
         est_freq = np.nan
 
-    # Print drive parameters when simulation is run
-    print_drive_parameters = True
-    if print_drive_parameters:
+    if diagnostic_mode:
         print("Drive parameters: \n")
         print(f"Rhythm: {rhythm}")
         print(f"Amplitude (dimensionless, normalized): {drive.max():.3f}")
@@ -406,9 +398,9 @@ def run_simulation(net: Network,
 
         spike_times[pop.name] = times
 
-    # Print total runtime
-    print("Total sim. run time: ", runtimer[1] - runtimer[0], "seconds")
-    print("\n****** Simulation completed. ******\n")
+    if diagnostic_mode:
+        print("Total sim. run time: ", runtimer[1] - runtimer[0], "seconds")
+        print("\n****** Simulation completed. ******\n")
 
     # Return the simulation results as a SimulationResult dataclass instance.
     return SimulationResult(t_ms=t_ms,
@@ -420,4 +412,3 @@ def run_simulation(net: Network,
                             I_adapt_current_trace=I_adapt_current_trace,
                             w_trace=w_trace,
                             field_proxy=field_proxy,)
-

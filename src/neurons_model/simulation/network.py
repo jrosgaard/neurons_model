@@ -11,7 +11,6 @@ from dataclasses import dataclass, field
 
 from .config import NetworkConfig, PopulationConfig
 from ..perturbations.base import perturbation_from_config
-from ..cellManager import CellManager
 
 # Mapping of receptor names to integer codes for efficient processing.
 RECEPTOR_TO_CODE = {"ampa": 1,
@@ -45,13 +44,6 @@ class Network:
     Populations are tracked as named slices into those arrays."""
     config: NetworkConfig
     populations: list[PopulationSlice]
-
-    # 
-    name: str
-    class_: str
-    role: str
-    kind: str
-    dynamics: str
 
     # Neuron state arrays
     v_mv: np.ndarray

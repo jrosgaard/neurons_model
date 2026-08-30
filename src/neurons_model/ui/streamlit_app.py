@@ -4,7 +4,7 @@ Streamlit UI for interactive simulation inspection.
 
 To run locally, bash:
 conda activate neuronSB1
-streamlit run /Users/johanrosgaard/Documents/BNQ/neurons_model/src/neurons_model/ui/streamlit_app.py
+streamlit run src/neurons_model/ui/streamlit_app.py
 """
 
 from __future__ import annotations

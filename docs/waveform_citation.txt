@@ -1,0 +1,9 @@
+The waveforms used in the package are based on those found on StatPearls in:
+
+
+    Nayak CS, Anilkumar AC. Normal EEG Waveforms. 
+    [Updated 2025 Aug 3]. In: StatPearls [Internet]. 
+    Treasure Island (FL): StatPearls Publishing; 2026 Jan-. 
+    Available from: https://www.ncbi.nlm.nih.gov/books/NBK539805/
+
+
